@@ -1,0 +1,7 @@
+version: '3.7'
+services:
+  healthcheck:
+    image: healthcheck
+    build:
+      dockerfile: ./Dockerfile
+      context: .
