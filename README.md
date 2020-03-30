@@ -146,6 +146,7 @@ This worked well, but there were a few things that bothered me:
 1. I didn't like having to make my builds & containers so "istio-aware"
 2. I didn't like the dependency on CURL (we want to run hardened images)
 3. I didn't like the dependency on having a shell (a problem for distroless & scratch images)
+4. It's not always that easy to guarantee that a shellscript will be able to return the exit code of your application instead of the last executed command.
 
 So, what I ended up doing was just letting the pod crash, and using a pod restart policy of `OnFailure`, and implementing a generic "completion callback" in the application (so as to not call it "kill istio proxy callback").  Not perfect, but I can live with that.  I configure the completion callback as part of the application configuration file, which is mounted to the container from a secret.  You could also use environment variables.
 
