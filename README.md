@@ -175,7 +175,7 @@ spec:
           value: "http://localhost:15020/quitquitquit"
 ```
 
-**Note**: Make sure your container returns a non-zero exit code so Kubernetes knows its failed.  If you're entrypoint is a shellscript, the exit code of the _last command in the script_ will be returned, which in the case of the script above is `0`.  I fumbled on this, and it took me a while to realize that's why Kubernetes wasn't restarting my container.
+**Note**: Make sure your container returns a non-zero exit code so Kubernetes knows it's failed.  If your entrypoint is a shellscript, the exit code of the _last command in the script_ will be returned, which in the case of the script above is `0`.  I fumbled on this, and it took me a while to realize that's why Kubernetes wasn't restarting my container.
 
 ## Credits
 
